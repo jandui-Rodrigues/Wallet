@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { actionPushEmail } from '../redux/actions';
+import './Login.css';
 
 class Login extends React.Component {
   state = {
@@ -8,8 +12,10 @@ class Login extends React.Component {
 
   render() {
     const { email, password } = this.state;
+    const { dispatch } = this.props;
     return (
       <div className="conteiner-form">
+        <h2>Login</h2>
         <form>
           <label htmlFor="email">
             Email:
@@ -40,11 +46,21 @@ class Login extends React.Component {
               })) }
             />
           </label>
-          <button type="button">Entrar</button>
+          <button
+            onClick={ () => dispatch(actionPushEmail(email)) }
+            type="button"
+          >
+            Entrar
+
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default Login;
+Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect()(Login);
