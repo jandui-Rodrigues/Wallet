@@ -55,8 +55,3 @@ h2 {
   transition: ease-in-out 0.3s;
   width: 80%;
 }
-
-.conteiner-form button:hover {
-  background: rgba(0, 100, 22, 0.692);
-  color: #eee;
-}

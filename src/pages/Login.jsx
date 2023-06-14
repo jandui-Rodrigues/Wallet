@@ -8,11 +8,44 @@ class Login extends React.Component {
   state = {
     email: '',
     password: '',
+    buttonDisable: true,
+  };
+
+  componentDidMount() {
+    this.verifyDados();
+  }
+
+  verifyDados = () => {
+    const { email, password } = this.state;
+
+    const minCharcters = 6;
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i;
+    const validate = password.length >= minCharcters && emailRegex.test(email);
+    this.setState((prev) => ({
+      ...prev, buttonDisable: !(validate),
+    }));
+  };
+
+  changeInput = ({ target }) => {
+    const { name, value } = target;
+    this.setState(
+      (prev) => ({
+        ...prev, [name]: value,
+      }),
+      () => this.verifyDados(),
+    );
+  };
+
+  clickButton = () => {
+    const { dispatch, history } = this.props;
+    const { email } = this.state;
+    dispatch(actionPushEmail(email));
+    history.push('/carteira');
   };
 
   render() {
-    const { email, password } = this.state;
-    const { dispatch } = this.props;
+    const { email, password, buttonDisable } = this.state;
+
     return (
       <div className="conteiner-form">
         <h2>Login</h2>
@@ -23,10 +56,8 @@ class Login extends React.Component {
               data-testid="email-input"
               type="email"
               value={ email }
-              onChange={ ({ target }) => this.setState((prev) => ({
-                ...prev, email: target.value,
-              })) }
-              name="input-email"
+              onChange={ this.changeInput }
+              name="email"
               id="email"
               placeholder="Digite aqui seu email"
             />
@@ -41,13 +72,12 @@ class Login extends React.Component {
               id="password"
               placeholder="Escoha sua senha"
               value={ password }
-              onChange={ ({ target }) => this.setState((prev) => ({
-                ...prev, password: target.value,
-              })) }
+              onChange={ this.changeInput }
             />
           </label>
           <button
-            onClick={ () => dispatch(actionPushEmail(email)) }
+            disabled={ buttonDisable }
+            onClick={ this.clickButton }
             type="button"
           >
             Entrar
@@ -61,6 +91,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default connect()(Login);
