@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { actionPushEmail } from '../redux/actions';
 import './Login.css';
+import logo from '../images/logo.svg';
 
 class Login extends React.Component {
   state = {
@@ -48,33 +49,30 @@ class Login extends React.Component {
 
     return (
       <div className="conteiner-form">
-        <h2>Login</h2>
+        <img src={ logo } alt="logo Trybe Wallet" />
         <form>
-          <label htmlFor="email">
-            Email:
-            <input
-              data-testid="email-input"
-              type="email"
-              value={ email }
-              onChange={ this.changeInput }
-              name="email"
-              id="email"
-              placeholder="Digite aqui seu email"
-            />
-          </label>
-          <label htmlFor="password">
-            Password:
-            <input
-              data-testid="password-input"
-              type="password"
-              min="6"
-              name="password"
-              id="password"
-              placeholder="Escoha sua senha"
-              value={ password }
-              onChange={ this.changeInput }
-            />
-          </label>
+
+          <input
+            data-testid="email-input"
+            type="email"
+            value={ email }
+            onChange={ this.changeInput }
+            name="email"
+            id="email"
+            placeholder="Email"
+          />
+
+          <input
+            data-testid="password-input"
+            type="password"
+            min="6"
+            name="password"
+            id="password"
+            placeholder="Password"
+            value={ password }
+            onChange={ this.changeInput }
+          />
+
           <button
             disabled={ buttonDisable }
             onClick={ this.clickButton }

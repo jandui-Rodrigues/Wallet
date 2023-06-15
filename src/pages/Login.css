@@ -1,32 +1,29 @@
+body {
+  box-sizing: border-box;
+}
+
 .conteiner-form {
-  background: linear-gradient(30deg, green 10%, greenyellow 100%);
+  align-items: center;
+  background: #eee;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   height: 25rem;
   left: 50%;
-  min-width: 30rem;
+  min-width: 40rem;
+  padding: 2rem 0 0;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-h2 {
-  font-size: 2rem;
-  text-align: center;
 }
 
 .conteiner-form form {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  justify-content: center;
   padding: 2rem;
-}
-
-.conteiner-form label {
-  align-items: center;
-  display: flex;
-  font-size: 1.25rem;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -34,19 +31,34 @@ h2 {
   border: none;
   border-radius: 5px;
   font-size: 1.25rem;
-  outline: none;
-  padding: 0.3rem;
+  outline: rgba(0, 59, 229, 1) 1px solid;
+  padding: 0.8rem;
   width: 70%;
 }
 
+.conteiner-form input::placeholder {
+  color: rgba(0, 59, 229, 1);
+}
+
 .conteiner-form button {
-  background: rgb(0, 100, 22);
+  background: rgba(0, 59, 229, 1);
   border: none;
   border-radius: 10px;
+  color: #eee;
   font-size: 1.25rem;
   font-weight: 900;
   margin-top: 2rem;
   padding: 0.7rem;
   transition: ease-in-out 0.3s;
-  width: 80%;
+  width: 70%;
+}
+
+.conteiner-form button:hover {
+  background: #bebebe;
+  color: rgba(0, 59, 229, 1);
+}
+
+.conteiner-form button:disabled {
+  background: rgba(0, 30, 121, 0.842);
+  color: #d3d2d2;
 }

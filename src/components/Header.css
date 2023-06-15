@@ -1,0 +1,20 @@
+.conteiner-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+
+.conteiner-header div {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.conteiner-header h4 {
+  color: rgba(0, 59, 229, 1);
+}
+
+.conteiner-header .user-email {
+  color: #54e6a4;
+}
