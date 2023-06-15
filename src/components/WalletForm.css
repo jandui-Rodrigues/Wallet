@@ -1,0 +1,43 @@
+.conteiner-wallet-form {
+  align-items: center;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 4rem;
+}
+
+.conteiner-wallet-form form {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  width: 90%;
+}
+
+.conteiner-wallet-form input , select {
+  border: none;
+  border-radius: 5px;
+  color: rgba(0, 59, 229, 1);
+  font-size: 1.2rem;
+  font-weight: 100;
+  outline: rgba(0, 59, 229, 1) 1px solid;
+  padding: 0.3rem;
+}
+
+.conteiner-wallet-form label {
+  color: rgba(0, 59, 229, 1);
+}
+
+.description {
+  width: 30%;
+}
+
+.tags {
+  margin-right: 7rem;
+  width: 18%;
+}
+
+.value {
+  width: 14%;
+}
