@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import edit from '../images/edit.svg';
 import deleteIcon from '../images/delete.svg';
 import './Table.css';
+import { deleteExpense } from '../redux/actions';
 
 class Table extends Component {
   render() {
     const { expenses } = this.props;
+    const { dispatch } = this.props;
     console.log(expenses);
     return (
       <table className="table-despense">
@@ -43,7 +45,10 @@ class Table extends Component {
                 <button className="button-edit">
                   <img src={ edit } alt="" />
                 </button>
-                <button>
+                <button
+                  data-testid="delete-btn"
+                  onClick={ () => dispatch(deleteExpense(id)) }
+                >
                   <img src={ deleteIcon } alt="" />
                 </button>
               </td>
@@ -73,6 +78,7 @@ Table.propTypes = {
       ),
     }),
   ).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(Table);

@@ -1,4 +1,10 @@
-import { ADD_DESPENSE, EDIT, FECTH_API, GET_CURRENCYS } from '../actionsName';
+import {
+  ADD_DESPENSE,
+  DELETE_EXPENSE,
+  EDIT_EXPENSE,
+  FECTH_API,
+  GET_CURRENCYS,
+} from '../actionsName';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -9,7 +15,7 @@ const INITIAL_STATE = {
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case EDIT:
+  case EDIT_EXPENSE:
     return { ...state,
       editor: true,
     };
@@ -23,6 +29,11 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses, { ...action.payload, id: state.expenses.length }],
+    };
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => expense.id !== action.payload),
     };
 
   default:
