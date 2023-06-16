@@ -1,3 +1,9 @@
+.wallet-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .conteiner-wallet-form {
   align-items: center;
   background: #f0f2f5;
@@ -40,4 +46,21 @@
 
 .value {
   width: 14%;
+}
+
+.buttonAddDespense {
+  background: #67c99a;
+  border: none;
+  border-radius: 10px;
+  color: rgb(235, 235, 235);
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin: 4rem 0;
+  padding: 1.2rem;
+  transition: ease-in 0.1s;
+  width: 30%;
+}
+
+.buttonAddDespense:hover {
+  background: #43917dde;
 }

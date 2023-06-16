@@ -1,4 +1,4 @@
-import { EDIT, REQUEST_API, RESPONSE_API } from '../actionsName';
+import { ADD_DESPENSE, EDIT, FECTH_API, GET_CURRENCYS } from '../actionsName';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -11,16 +11,18 @@ const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case EDIT:
     return { ...state,
-      wallet: {
-        ...state.wallet,
-        editor: true,
-      },
+      editor: true,
     };
-  case REQUEST_API:
+  case FECTH_API:
     return state;
-  case RESPONSE_API:
+  case GET_CURRENCYS:
     return { ...state,
-      currencies: [...action.preload],
+      currencies: [...action.payload],
+    };
+  case ADD_DESPENSE:
+    return {
+      ...state,
+      expenses: [...state.expenses, { ...action.payload, id: state.expenses.length }],
     };
 
   default:

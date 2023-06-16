@@ -9,13 +9,26 @@ import person from '../images/person.svg';
 class Header extends Component {
   render() {
     const { user, wallet } = this.props;
-    console.log(user.email);
+    let some = 0;
+    wallet.expenses.map((item) => {
+      const filter = Object
+        .values(item.exchangeRates)
+        .find(({ code }) => code === item.currency);
+
+      const { ask } = filter;
+      some += item.value * ask;
+      return 0;
+    });
+
     return (
       <header className="conteiner-header">
         <img src={ logo } alt="logo Trybe Wallet" />
         <div>
           <img src={ moeda } alt="" />
-          <h4 data-testid="total-field">{wallet.idToEdit}</h4>
+          <h4 data-testid="total-field">
+            { some.toFixed(2) }
+
+          </h4>
           <h4 data-testid="header-currency-field">BRL</h4>
         </div>
         <div>
