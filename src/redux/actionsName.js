@@ -3,4 +3,6 @@ export const FECTH_API = 'FECTH_API';
 export const GET_CURRENCYS = 'GET_CURRENCYS';
 export const ADD_DESPENSE = 'ADD_DESPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE_TRUE = 'EDIT_EXPENSE_TRUE';
+export const EDIT_EXPENSE_FALSE = 'EDIT_EXPENSE_FALSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';

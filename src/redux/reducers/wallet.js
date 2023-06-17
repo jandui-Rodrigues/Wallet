@@ -2,6 +2,7 @@ import {
   ADD_DESPENSE,
   DELETE_EXPENSE,
   EDIT_EXPENSE,
+  EDIT_EXPENSE_TRUE,
   FECTH_API,
   GET_CURRENCYS,
 } from '../actionsName';
@@ -15,9 +16,16 @@ const INITIAL_STATE = {
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case EDIT_EXPENSE:
+  case EDIT_EXPENSE_TRUE:
     return { ...state,
       editor: true,
+      idToEdit: action.payload,
+    };
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      editor: false,
+      expenses: [...action.payload],
     };
   case FECTH_API:
     return state;

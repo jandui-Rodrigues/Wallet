@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import edit from '../images/edit.svg';
 import deleteIcon from '../images/delete.svg';
 import './Table.css';
-import { deleteExpense } from '../redux/actions';
+import { deleteExpense, editExpenseTrue } from '../redux/actions';
 
 class Table extends Component {
   render() {
@@ -42,7 +42,11 @@ class Table extends Component {
               <td>{ (exchangeRates[currency].ask * value).toFixed(2) }</td>
               <td>Real</td>
               <td>
-                <button className="button-edit">
+                <button
+                  data-testid="edit-btn"
+                  className="button-edit"
+                  onClick={ () => dispatch(editExpenseTrue(id)) }
+                >
                   <img src={ edit } alt="" />
                 </button>
                 <button
@@ -61,6 +65,7 @@ class Table extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  edit: state.wallet.edit,
   expenses: state.wallet.expenses,
 });
 

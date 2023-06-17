@@ -3,6 +3,7 @@ import {
   ADD_EMAIL_USER,
   DELETE_EXPENSE,
   EDIT_EXPENSE,
+  EDIT_EXPENSE_TRUE,
   FECTH_API,
   GET_CURRENCYS,
 } from '../actionsName';
@@ -34,6 +35,10 @@ export const deleteExpense = (payload) => ({
   payload,
 });
 
+export const editExpenseTrue = (payload) => ({
+  type: EDIT_EXPENSE_TRUE,
+  payload,
+});
 export const editExpense = (payload) => ({
   type: EDIT_EXPENSE,
   payload,

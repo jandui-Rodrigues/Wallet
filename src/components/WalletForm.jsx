@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import './WalletForm.css';
 import { fethApi } from '../services/fetchApi';
 import { ADD_DESPENSE, GET_CURRENCYS } from '../redux/actionsName';
+import { editExpense } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
-    valueDespense: '',
-    descriptionDespense: '',
-    currencySelected: 'USD',
-    methodPayment: '',
+    value: '',
+    description: '',
+    currency: 'USD',
+    method: 'Dinheiro',
     tag: '',
   };
 
@@ -32,42 +33,61 @@ class WalletForm extends Component {
 
   saveStateButton = () => {
     const {
-      valueDespense,
-      descriptionDespense,
-      currencySelected,
-      methodPayment,
+      value,
+      description,
+      currency,
+      method,
       tag } = this.state;
     const { dispatch } = this.props;
     const payload = {
-      id: 0,
-      value: valueDespense,
-      description: descriptionDespense,
-      currency: currencySelected,
-      method: methodPayment,
+      id: '',
+      value,
+      description,
+      currency,
+      method,
       tag,
     };
     dispatch(fethApi(ADD_DESPENSE, payload));
-
     this.setState({
-      valueDespense: '',
-      descriptionDespense: '',
-      currencySelected: 'USD',
-      methodPayment: '',
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
       tag: '',
     });
+  };
+
+  editDespenseButton = () => {
+    const { dispatch, wallet } = this.props;
+    const filterExpenseID = wallet.expenses
+      .find((expense) => expense.id === wallet.idToEdit);
+    const filterExpenses = wallet.expenses
+      .filter((expense) => expense.id !== wallet.idToEdit);
+    console.log(wallet.idToEdit);
+    const { state } = this;
+    const payload = {
+      id: wallet.idToEdit,
+      ...filterExpenseID,
+      ...state,
+    };
+
+    const newExpenses = [...filterExpenses, payload].sort((a, b) => a.id - b.id);
+    console.log(newExpenses);
+    dispatch(editExpense(newExpenses));
   };
 
   render() {
     const { wallet } = this.props;
     const {
-      valueDespense,
-      descriptionDespense,
-      currencySelected,
-      methodPayment,
+      value,
+      description,
+      currency,
+      method,
       tag,
     } = this.state;
     return (
       <div className="wallet-form">
+        { wallet.editor && <h1>Edição de despesa </h1>}
         <div className="conteiner-wallet-form">
           <form>
             <label htmlFor="description">
@@ -75,9 +95,9 @@ class WalletForm extends Component {
             </label>
             <input
               data-testid="description-input"
-              value={ descriptionDespense }
+              value={ description }
               onChange={ this.changeField }
-              name="descriptionDespense"
+              name="description"
               id="description"
               className="description"
               cols="30"
@@ -104,9 +124,9 @@ class WalletForm extends Component {
               Valor
             </label>
             <input
-              name="valueDespense"
+              name="value"
               id="value"
-              value={ valueDespense }
+              value={ value }
               type="number"
               className="value"
               data-testid="value-input"
@@ -116,10 +136,10 @@ class WalletForm extends Component {
               Método de pagamento
             </label>
             <select
-              value={ methodPayment }
+              value={ method }
               data-testid="method-input"
               onChange={ this.changeField }
-              name="methodPayment"
+              name="method"
             >
               <option value="Dinheiro">Dinheiro</option>
               <option value="Cartão de crédito">Cartão de crédito</option>
@@ -129,10 +149,10 @@ class WalletForm extends Component {
               Moeda
             </label>
             <select
-              value={ currencySelected }
+              value={ currency }
               data-testid="currency-input"
               onChange={ this.changeField }
-              name="currencySelected"
+              name="currency"
               id="currency"
             >
               { wallet.currencies
@@ -144,13 +164,26 @@ class WalletForm extends Component {
 
           </form>
         </div>
-        <button
-          onClick={ this.saveStateButton }
-          className="buttonAddDespense"
-        >
-          Adicionar despesa
 
-        </button>
+        {
+          wallet.editor
+            ? (
+              <button
+                onClick={ this.editDespenseButton }
+                className="buttonAddDespense"
+              >
+                Editar despesa
+              </button>
+            )
+            : (
+              <button
+                onClick={ this.saveStateButton }
+                className="buttonAddDespense"
+              >
+                Adicionar despesa
+              </button>
+            )
+        }
       </div>
     );
   }
@@ -163,6 +196,11 @@ WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   wallet: PropTypes.shape({
     currencies: PropTypes.arrayOf(PropTypes.string),
+    editor: PropTypes.bool,
+    idToEdit: PropTypes.number,
+    expenses: PropTypes.arrayOf(
+      PropTypes.shape({}),
+    ),
   }).isRequired,
 };
 

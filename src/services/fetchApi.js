@@ -1,5 +1,8 @@
 import { addDespense, fecthData, getCurrencys } from '../redux/actions';
-import { ADD_DESPENSE, GET_CURRENCYS } from '../redux/actionsName';
+import {
+  ADD_DESPENSE,
+  GET_CURRENCYS,
+} from '../redux/actionsName';
 
 const filterCurrency = (data) => Object
   .keys(data).filter((currency) => currency !== 'USDT');
@@ -16,7 +19,6 @@ function dataFilter(action, payload, data, dispatch) {
   case ADD_DESPENSE:
 
     return dispatch(addDespense(exchangeRatesAdd(data, payload)));
-
   default:
     return {};
   }
