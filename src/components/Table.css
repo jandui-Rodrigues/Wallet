@@ -1,3 +1,20 @@
+.table-despense {
+  background: rgba(0, 59, 229, 1);
+  border-radius: 10px;
+  left: 50%;
+  margin: 7.8rem 0;
+  padding: 25rem 3rem 5rem;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 90%;
+  z-index: 1;
+}
+
+.table-despense th {
+  border-right: 0.7px solid rgba(231, 231, 231, 0.719);
+  color: rgb(231, 231, 231);
+}
+
 .table-despense button {
   border: none;
 }

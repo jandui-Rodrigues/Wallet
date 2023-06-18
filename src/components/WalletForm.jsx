@@ -32,22 +32,11 @@ class WalletForm extends Component {
   };
 
   saveStateButton = () => {
-    const {
-      value,
-      description,
-      currency,
-      method,
-      tag } = this.state;
     const { dispatch } = this.props;
-    const payload = {
-      id: '',
-      value,
-      description,
-      currency,
-      method,
-      tag,
-    };
-    dispatch(fethApi(ADD_DESPENSE, payload));
+
+    dispatch(fethApi(ADD_DESPENSE, {
+      ...this.state,
+    }));
     this.setState({
       value: '',
       description: '',

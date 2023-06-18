@@ -7,9 +7,13 @@ import Table from '../components/Table';
 class Wallet extends React.Component {
   render() {
     return (
-      <div className="conteiner-wallet">
-        <Header />
-        <WalletForm />
+      <div>
+
+        <div className="conteiner-wallet">
+          <Header />
+          <WalletForm />
+        </div>
+
         <Table />
       </div>
     );

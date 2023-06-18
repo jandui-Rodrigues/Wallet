@@ -13,7 +13,7 @@ class Table extends Component {
     console.log(expenses);
     return (
       <table className="table-despense">
-        <thead>
+        <thead className="table-head">
 
           <tr>
 
@@ -28,7 +28,7 @@ class Table extends Component {
             <th>Editar/Excluir</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-body">
           { expenses.map(({
             id, description, tag, method, value, currency, exchangeRates,
           }) => (
