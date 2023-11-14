@@ -4,6 +4,7 @@
   Uma carteira de controle de gastos com conversor de moedas, utilizando React, Redux React é uma Api de <a href="https://economia.awesomeapi.com.br/json/all"> Cotações de Moedas.</a>
   Um Projeto com focor em aprimorar meus conhecimentos em Redux é React.
 </p>
+<a href="https://wallet-jrn.netlify.app/">Deploy Wallet</a>
 <h2>Tenologias Ultilizadas</h2>
  <div >
  <img aling="center" height="32px" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
