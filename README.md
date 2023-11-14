@@ -59,7 +59,7 @@ $ npm run start
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
 
-Feito com ❤️ por Jandui Rodrigues neto 👋🏽 [Entre em contato!](linkedin.com/in/dev-jandui-rodrigues/)
+Feito com ❤️ por Jandui Rodrigues neto 👋🏽 [Entre em contato!](https://linkedin.com/in/dev-jandui-rodrigues/)
 
 ---
  
