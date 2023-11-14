@@ -5,6 +5,14 @@
   Um Projeto com focor em aprimorar meus conhecimentos em Redux é React.
 </p>
 
+### Web
+
+<div style="display:flex; gap:1rem;">
+  <img  alt="Wallet" title="Wallet" src="./assets/wallet.gif" width="300px">
+  <img alt="Wallet login" title="Wallet login" src="./assets/wallet-login.png" width="300px" >
+  <img alt="wallet tela inicial" title="wallet tela inicial" src="./assets/wallet.png" width="300px" >
+</div>
+
 <h2>Tenologias Ultilizadas</h2>
  <div >
  <img aling="center" height="32px" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
