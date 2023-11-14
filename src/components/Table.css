@@ -1,4 +1,4 @@
-.table-despense {
+.conteiner-table {
   background: rgba(0, 59, 229, 1);
   border-radius: 10px;
   left: 50%;
@@ -10,11 +10,54 @@
   z-index: 1;
 }
 
-.table-despense th {
-  border-right: 0.7px solid rgba(231, 231, 231, 0.719);
+.table-despense {
+  border-collapse: collapse;
+  margin: auto;
+  text-align: center;
+  width: 94%;
+}
+
+.table-despense thead tr {
   color: rgb(231, 231, 231);
 }
 
-.table-despense button {
+.table-despense thead tr th {
+  border-right: 0.7px solid rgb(231, 231, 231);
+  border-width: 1px;
+  color: rgb(231, 231, 231);
+  padding-bottom: 1rem;
+  width: 10px;
+  word-break: break-word;
+}
+
+.table-despense thead tr th:last-child {
+  border-right: none;
+}
+
+.table-despense td button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.table-despense button img {
+  height: 25px;
+}
+
+.buttons {
+  width: 5px;
+}
+
+.table-despense tbody tr td {
+  border-bottom: rgba(47, 193, 140, 1) 1px solid;
+  border-top: solid 1px rgb(233, 233, 233);
+  color: rgba(47, 193, 140, 1);
+  padding: 1rem;
+  width: 10px;
+  word-break: break-word;
+}
+
+.table-despense tbody tr:last-child td {
   border: none;
 }
